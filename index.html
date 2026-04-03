@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary Ashraf Labib — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0f; --bg2:#10101a; --bg3:#15151f;
+  --surface:#1a1a28; --surface2:#22223a;
+  --border:rgba(255,255,255,0.08); --border2:rgba(255,255,255,0.13);
+  --text:#f0eef8; --text2:#a09ab8; --text3:#6b6585;
+  --accent:#b9a0f5; --accent2:#7c5cbf; --accent3:#e8d5ff;
+  --teal:#7dd3c8; --rose:#f0a0b8; --gold:#e8c87a;
+  --glow:rgba(185,160,245,0.15);
+  --nav-h:68px; --r:16px; --rs:8px;
+}
+[data-theme="light"] {
+  --bg:#f5f3ff; --bg2:#ede9ff; --bg3:#e8e2ff;
+  --surface:#ffffff; --surface2:#f0ecff;
+  --border:rgba(100,80,180,0.12); --border2:rgba(100,80,180,0.22);
+  --text:#1a1530; --text2:#5a5075; --text3:#9a92b0;
+  --accent:#7c5cbf; --accent2:#b9a0f5; --accent3:#4a3080;
+  --teal:#1a8a80; --rose:#c0506a; --gold:#a07820;
+  --glow:rgba(124,92,191,0.1);
+}
+[data-lang="ar"] { direction:rtl; font-family:'Noto Sans Arabic',sans-serif; }
+[data-lang="ar"] .nav-logo { margin-right:0; margin-left:auto; }
+[data-lang="ar"] .nav-controls { margin-left:0; margin-right:20px; }
+[data-lang="ar"] .nav-links { flex-direction:row-reverse; }
+[data-lang="ar"] .hero-content { text-align:right; }
+[data-lang="ar"] .hero-badge,[data-lang="ar"] .hero-actions,[data-lang="ar"] .hero-stats { justify-content:flex-end; }
+[data-lang="ar"] .tl-item { padding-left:0; padding-right:36px; border-left:none; border-right:2px solid var(--border2); }
+[data-lang="ar"] .tl-dot { left:auto; right:-6px; }
+[data-lang="ar"] .ci:hover { transform:translateX(-4px); }
+[data-lang="ar"] .tl-list li::before { content:'←'; }
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Instrument Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; overflow-x:hidden; transition:background .3s,color .3s; }
+a { color:inherit; text-decoration:none; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--accent2); border-radius:3px; }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h); display:flex; align-items:center; padding:0 clamp(20px,5vw,60px); background:var(--bg); border-bottom:1px solid var(--border); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:background .3s,box-shadow .3s; }
+nav.scrolled { background:rgba(10,10,15,0.93); box-shadow:0 4px 30px rgba(0,0,0,.3); }
+[data-theme="light"] nav.scrolled { background:rgba(245,243,255,0.93); }
+.nav-logo { font-family:'DM Serif Display',serif; font-size:1.35rem; color:var(--accent); margin-right:auto; letter-spacing:-.02em; cursor:pointer; }
+.nav-links { display:flex; gap:2px; list-style:none; align-items:center; }
+.nav-links a { padding:6px 14px; font-size:.85rem; color:var(--text2); font-weight:500; border-radius:100px; transition:all .2s; }
+.nav-links a:hover,.nav-links a.active { color:var(--accent); background:var(--glow); }
+.nav-controls { display:flex; gap:8px; align-items:center; margin-left:20px; }
+.ctrl-btn { background:var(--surface); border:1px solid var(--border); border-radius:100px; padding:7px 14px; color:var(--text2); font-size:.82rem; cursor:pointer; transition:all .2s; font-family:'DM Mono',monospace; line-height:1; }
+.ctrl-btn:hover { background:var(--surface2); color:var(--text); border-color:var(--border2); }
+.lang-sel { background:var(--surface); border:1px solid var(--border); border-radius:100px; padding:7px 14px; color:var(--text2); font-size:.82rem; cursor:pointer; outline:none; font-family:'DM Mono',monospace; transition:all .2s; appearance:none; }
+.lang-sel:hover { background:var(--surface2); }
+.menu-btn { display:none; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px 10px; cursor:pointer; color:var(--text2); font-size:1.1rem; transition:all .2s; align-items:center; justify-content:center; }
+.mob-menu { display:none; position:fixed; top:var(--nav-h); left:0; right:0; z-index:99; background:var(--bg2); border-bottom:1px solid var(--border); padding:14px; flex-direction:column; gap:4px; }
+.mob-menu.open { display:flex; }
+.mob-menu a { padding:10px 16px; border-radius:var(--rs); color:var(--text2); font-size:.95rem; transition:all .2s; display:block; }
+.mob-menu a:hover { background:var(--surface); color:var(--text); }
+.hero { min-height:100vh; display:flex; align-items:center; padding:calc(var(--nav-h)+60px) clamp(20px,8vw,120px) 80px; position:relative; overflow:hidden; justify-content: center; }
+.hero-bg { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.orb { position:absolute; border-radius:50%; filter:blur(120px); animation:orbFloat 8s ease-in-out infinite; }
+.orb1 { width:520px; height:520px; background:var(--accent); top:-120px; right:-100px; opacity:.22; }
+.orb2 { width:360px; height:360px; background:var(--teal); bottom:-60px; left:-80px; opacity:.14; animation-delay:3s; }
+.orb3 { width:240px; height:240px; background:var(--rose); top:45%; left:38%; opacity:.09; animation-delay:5s; }
+@keyframes orbFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-28px) scale(1.05)} }
+.grid-bg { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent); -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent); }
+.hero-content { position:relative; z-index:1; max-width:720px; display:flex; flex-direction:column; gap:26px; animation:heroIn .9s cubic-bezier(.22,1,.36,1) both; margin: 75px 15px }
+@keyframes heroIn { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--border2); border-radius:100px; padding:6px 18px; font-size:.78rem; color:var(--accent); font-family:'DM Mono',monospace; width:fit-content; letter-spacing:.05em; }
+.hero-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite; flex-shrink:0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+.hero-name { font-family:'DM Serif Display',serif; font-size:clamp(3rem,8vw,6rem); line-height:1.05; letter-spacing:-.03em; }
+.hero-name em { font-style:italic; color:var(--accent); display:block; }
+.hero-tagline { font-size:clamp(.95rem,2vw,1.2rem); color:var(--text2); max-width:520px; }
+.hero-tagline strong { color:var(--text); font-weight:600; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn-p { background:var(--accent); color:var(--bg); padding:12px 28px; border-radius:100px; font-weight:600; font-size:.9rem; transition:all .25s; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:'Instrument Sans',sans-serif; }
+.btn-p:hover { background:var(--accent3); transform:translateY(-2px); box-shadow:0 8px 30px var(--glow); }
+.btn-o { background:transparent; color:var(--text2); padding:12px 28px; border-radius:100px; font-weight:500; font-size:.9rem; border:1px solid var(--border2); cursor:pointer; transition:all .25s; display:inline-flex; align-items:center; gap:8px; font-family:'Instrument Sans',sans-serif; }
+.btn-o:hover { color:var(--text); border-color:var(--accent); background:var(--glow); }
+.hero-stats { display:flex; gap:36px; flex-wrap:wrap; padding-top:20px; border-top:1px solid var(--border); }
+.stat { display:flex; flex-direction:column; gap:3px; }
+.stat-n { font-family:'DM Serif Display',serif; font-size:1.7rem; color:var(--accent); line-height:1; }
+.stat-l { font-size:.74rem; color:var(--text3); letter-spacing:.06em; text-transform:uppercase; font-family:'DM Mono',monospace; }
+section { padding:100px clamp(20px,8vw,120px); }
+.sec-tag { font-family:'DM Mono',monospace; font-size:.75rem; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.sec-tag::before { content:'//'; opacity:.45; }
+.sec-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,4vw,3rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:52px; }
+.sec-title em { font-style:italic; color:var(--accent); }
+#about { background:var(--bg2); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+.about-text { display:flex; flex-direction:column; gap:20px; }
+.about-text p { color:var(--text2); font-size:1.02rem; line-height:1.85; }
+.about-text p strong { color:var(--text); }
+.about-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+.pill { display:inline-flex; align-items:center; gap:7px; background:var(--surface); border:1px solid var(--border); padding:8px 16px; border-radius:100px; font-size:.82rem; color:var(--text2); transition:all .2s; font-family:'DM Mono',monospace; }
+.pill:hover { color:var(--accent); border-color:var(--accent); background:var(--glow); }
+.pill svg { flex-shrink:0; }
+.about-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:32px; display:flex; flex-direction:column; gap:22px; position:relative; overflow:hidden; }
+.about-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--teal)); }
+.info-row { display:flex; flex-direction:column; gap:4px; }
+.lbl { font-size:.72rem; color:var(--text3); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.08em; }
+.val { font-size:.95rem; color:var(--text); font-weight:500; }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
+.skill-g { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:24px; transition:all .25s; }
+.skill-g:hover { border-color:var(--accent2); transform:translateY(-3px); box-shadow:0 8px 32px rgba(0,0,0,.2); }
+.sg-title { font-size:.74rem; color:var(--accent); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.sg-title::after { content:''; flex:1; height:1px; background:var(--border); }
+.chips { display:flex; flex-wrap:wrap; gap:8px; }
+.chip { background:var(--bg3); border:1px solid var(--border); border-radius:var(--rs); padding:5px 12px; font-size:.79rem; color:var(--text2); transition:all .2s; font-family:'DM Mono',monospace; }
+.chip:hover { color:var(--accent); border-color:var(--accent); }
+#experience { background:var(--bg2); }
+.timeline { display:flex; flex-direction:column; }
+.tl-item { position:relative; padding-left:36px; padding-bottom:52px; border-left:2px solid var(--border2); }
+.tl-item:last-child { padding-bottom:0; border-color:transparent; }
+.tl-dot { position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg2); box-shadow:0 0 14px var(--glow); }
+.tl-meta { font-family:'DM Mono',monospace; font-size:.75rem; color:var(--text3); margin-bottom:8px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.tl-meta .co { color:var(--teal); font-weight:600; }
+.tl-title { font-size:1.15rem; font-weight:600; color:var(--text); margin-bottom:14px; }
+.tl-list { color:var(--text2); font-size:.92rem; line-height:1.8; list-style:none; }
+.tl-list li { margin-bottom:7px; display:flex; gap:10px; }
+.tl-list li::before { content:'→'; color:var(--accent); flex-shrink:0; opacity:.65; }
+.tl-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+.tag { background:var(--glow); border:1px solid var(--border2); border-radius:100px; padding:3px 11px; font-size:.74rem; color:var(--accent); font-family:'DM Mono',monospace; }
+.proj-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px; }
+.proj-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:28px; transition:all .3s; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden; }
+.proj-card::before { content:''; position:absolute; top:0; left:0; width:60px; height:60px; background:radial-gradient(circle at top left,var(--glow),transparent); pointer-events:none; }
+.proj-card:hover { border-color:var(--accent2); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.25); }
+.proj-lbl { display:inline-block; font-family:'DM Mono',monospace; font-size:.7rem; color:var(--gold); background:rgba(232,200,122,.1); border:1px solid rgba(232,200,122,.22); padding:2px 10px; border-radius:100px; }
+.proj-title { font-size:1.05rem; font-weight:600; color:var(--text); }
+.proj-desc { color:var(--text2); font-size:.9rem; line-height:1.72; flex:1; }
+.proj-foot { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+#education { background:var(--bg2); }
+.edu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+.edu-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:28px; transition:all .25s; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:6px; }
+.edu-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--teal),transparent); }
+.edu-card:hover { border-color:var(--teal); transform:translateY(-3px); }
+.edu-deg { font-size:1rem; font-weight:600; color:var(--text); }
+.edu-sch { color:var(--teal); font-size:.87rem; font-family:'DM Mono',monospace; }
+.edu-date { color:var(--text3); font-size:.79rem; font-family:'DM Mono',monospace; margin-bottom:6px; }
+.edu-desc { color:var(--text2); font-size:.88rem; line-height:1.65; }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.contact-links { display:flex; flex-direction:column; gap:14px; }
+.ci { display:flex; align-items:center; gap:14px; background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:16px 20px; transition:all .2s; color:var(--text2); font-size:.92rem; }
+.ci:hover { border-color:var(--accent); color:var(--text); transform:translateX(4px); }
+.ci-icon { width:40px; height:40px; background:var(--glow); border:1px solid var(--border2); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ci-icon.hr { background:rgba(0,234,100,.08); border-color:rgba(0,234,100,.2); }
+.ci-info { display:flex; flex-direction:column; gap:2px; }
+.ci-lbl { font-size:.7rem; color:var(--text3); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.07em; }
+.contact-form { display:flex; flex-direction:column; gap:16px; }
+.fg { display:flex; flex-direction:column; gap:6px; }
+.flbl { font-size:.76rem; color:var(--text3); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.06em; }
+.finp,.ftxt { background:var(--surface); border:1px solid var(--border); border-radius:var(--rs); padding:12px 16px; color:var(--text); font-size:.92rem; font-family:'Instrument Sans',sans-serif; outline:none; transition:border-color .2s; width:100%; }
+.finp:focus,.ftxt:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--glow); }
+.ftxt { height:130px; resize:none; }
+footer { background:var(--bg2); border-top:1px solid var(--border); padding:36px clamp(20px,8vw,120px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.foot-name { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--accent); }
+.foot-copy { font-size:.8rem; color:var(--text3); font-family:'DM Mono',monospace; }
+.foot-links { display:flex; gap:16px; align-items:center; }
+.foot-links a { color:var(--text3); transition:color .2s; display:flex; align-items:center; }
+.foot-links a:hover { color:var(--accent); }
+.fi { opacity:0; transform:translateY(22px); transition:opacity .6s ease,transform .6s ease; }
+.fi.visible { opacity:1; transform:translateY(0); }
+.s1{transition-delay:.1s} .s2{transition-delay:.2s} .s3{transition-delay:.3s}
+@media(max-width:900px) {
+  .about-grid,.contact-grid { grid-template-columns:1fr; gap:40px; }
+  .nav-links { display:none; }
+  .menu-btn { display:flex; }
+}
+@media(max-width:600px) {
+  .hero-stats { gap:22px; }
+  .proj-grid { grid-template-columns:1fr; }
+  .skills-grid { grid-template-columns:1fr; }
+  footer { flex-direction:column; text-align:center; }
+  .foot-links { justify-content:center; }
+}
+
+/* ── MATCH ME FLOATING BUTTON ── */
+.match-fab { position:fixed; bottom:32px; right:32px; z-index:200; background:var(--accent); color:var(--bg); border:none; border-radius:100px; padding:14px 24px; font-family:'DM Mono',monospace; font-size:.82rem; font-weight:500; letter-spacing:.04em; cursor:pointer; display:flex; align-items:center; gap:9px; box-shadow:0 8px 32px rgba(185,160,245,.35); transition:all .25s; }
+.match-fab:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(185,160,245,.5); background:var(--accent3); }
+.match-fab-dot { width:8px; height:8px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite; flex-shrink:0; }
+.match-overlay { position:fixed; inset:0; z-index:300; background:rgba(5,5,10,.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity .3s; }
+.match-overlay.open { opacity:1; pointer-events:all; }
+.match-modal { background:var(--bg2); border:1px solid var(--border2); border-radius:24px; width:100%; max-width:860px; max-height:90vh; overflow-y:auto; display:flex; flex-direction:column; transform:translateY(30px) scale(.97); transition:transform .3s cubic-bezier(.22,1,.36,1); }
+.match-overlay.open .match-modal { transform:translateY(0) scale(1); }
+.match-modal::-webkit-scrollbar { width:4px; }
+.match-modal::-webkit-scrollbar-thumb { background:var(--accent2); border-radius:2px; }
+.modal-head { display:flex; align-items:center; justify-content:space-between; padding:28px 32px 0; }
+.modal-head h3 { font-family:'DM Serif Display',serif; font-size:1.6rem; color:var(--text); letter-spacing:-.02em; }
+.modal-head h3 em { font-style:italic; color:var(--accent); }
+.modal-close { background:var(--surface); border:1px solid var(--border); border-radius:100px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text2); font-size:1.1rem; transition:all .2s; flex-shrink:0; }
+.modal-close:hover { background:var(--surface2); color:var(--text); }
+.modal-body { padding:24px 32px 32px; display:flex; flex-direction:column; gap:24px; }
+.jd-wrap { display:flex; flex-direction:column; gap:10px; }
+.jd-label { font-family:'DM Mono',monospace; font-size:.72rem; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; }
+.jd-input { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; color:var(--text); font-family:'Instrument Sans',sans-serif; font-size:.92rem; line-height:1.7; resize:none; height:140px; outline:none; transition:border-color .2s; width:100%; }
+.jd-input:focus { border-color:var(--accent2); box-shadow:0 0 0 3px var(--glow); }
+.jd-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.match-run-btn { background:var(--accent); color:var(--bg); border:none; border-radius:100px; padding:11px 28px; font-family:'DM Mono',monospace; font-size:.82rem; font-weight:500; letter-spacing:.04em; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:8px; }
+.match-run-btn:hover { background:var(--accent3); transform:translateY(-1px); }
+.match-run-btn:disabled { opacity:.5; pointer-events:none; }
+.match-hint { font-size:.8rem; color:var(--text3); font-family:'DM Mono',monospace; }
+.match-results { display:none; flex-direction:column; gap:22px; animation:fadeUp .4s ease both; }
+.match-results.show { display:flex; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.score-hero { display:flex; align-items:center; gap:32px; background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px 28px; flex-wrap:wrap; }
+.ring-wrap { position:relative; width:100px; height:100px; flex-shrink:0; }
+.ring-wrap svg { transform:rotate(-90deg); }
+.ring-bg { fill:none; stroke:var(--border2); stroke-width:8; }
+.ring-fill { fill:none; stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset 1s cubic-bezier(.22,1,.36,1); }
+.ring-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.ring-pct { font-family:'DM Serif Display',serif; font-size:1.55rem; color:var(--text); line-height:1; }
+.ring-sub { font-size:.62rem; color:var(--text3); font-family:'DM Mono',monospace; letter-spacing:.06em; margin-top:3px; }
+.score-stats { display:flex; gap:20px; flex-wrap:wrap; flex:1; }
+.score-stat { display:flex; flex-direction:column; gap:4px; }
+.score-stat-n { font-family:'DM Serif Display',serif; font-size:1.4rem; line-height:1; }
+.score-stat-n.good { color:var(--teal); }
+.score-stat-n.warn { color:var(--gold); }
+.score-stat-n.bad { color:var(--rose); }
+.score-stat-l { font-size:.7rem; color:var(--text3); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.07em; }
+.breakdown { display:flex; flex-direction:column; gap:10px; }
+.bk-row { display:flex; align-items:center; gap:12px; }
+.bk-label { font-size:.78rem; color:var(--text2); font-family:'DM Mono',monospace; width:160px; flex-shrink:0; }
+.bk-track { flex:1; height:5px; background:var(--border); border-radius:99px; overflow:hidden; }
+.bk-fill { height:100%; border-radius:99px; transition:width .8s cubic-bezier(.22,1,.36,1); }
+.bk-val { font-size:.75rem; color:var(--text2); font-family:'DM Mono',monospace; width:40px; text-align:right; flex-shrink:0; }
+.chips-section { display:flex; flex-direction:column; gap:12px; }
+.chips-section-title { font-size:.72rem; color:var(--text3); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; display:flex; align-items:center; gap:8px; }
+.chips-section-title::after { content:''; flex:1; height:1px; background:var(--border); }
+.chips-row { display:flex; flex-wrap:wrap; gap:7px; }
+.m-chip { padding:4px 12px; border-radius:100px; font-size:.76rem; font-family:'DM Mono',monospace; border:1px solid; }
+.m-chip.matched { background:rgba(125,211,200,.1); border-color:rgba(125,211,200,.3); color:var(--teal); }
+.m-chip.missing { background:rgba(240,160,184,.08); border-color:rgba(240,160,184,.25); color:var(--rose); }
+.m-chip.opt-have { background:rgba(185,160,245,.1); border-color:rgba(185,160,245,.25); color:var(--accent); }
+.m-chip.opt-miss { background:var(--surface); border-color:var(--border); color:var(--text3); }
+.ranked-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.ranked-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+.ranked-card-title { font-size:.72rem; color:var(--text3); font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.ranked-card-title::after { content:''; flex:1; height:1px; background:var(--border); }
+.ranked-item { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.ranked-item:last-child { margin-bottom:0; }
+.r-num { width:22px; height:22px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:.7rem; font-family:'DM Mono',monospace; color:var(--text3); flex-shrink:0; }
+.r-label { flex:1; font-size:.85rem; color:var(--text2); }
+.r-bar-wrap { display:flex; align-items:center; gap:7px; }
+.r-bar-track { width:60px; height:3px; background:var(--border); border-radius:99px; overflow:hidden; }
+.r-bar-fill { height:100%; background:var(--accent2); border-radius:99px; }
+.r-pct { font-size:.7rem; color:var(--text3); font-family:'DM Mono',monospace; min-width:28px; text-align:right; }
+.legend { display:flex; gap:16px; flex-wrap:wrap; }
+.legend-item { display:flex; align-items:center; gap:6px; font-size:.74rem; color:var(--text3); font-family:'DM Mono',monospace; }
+.legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+@media(max-width:600px) {
+  .modal-head { padding:20px 20px 0; }
+  .modal-body { padding:18px 20px 24px; }
+  .ranked-grid { grid-template-columns:1fr; }
+  .bk-label { width:120px; font-size:.72rem; }
+  .match-fab { bottom:20px; right:20px; padding:12px 18px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo" onclick="scrollTo({top:0,behavior:'smooth'})">mary.dev</div>
+  <ul class="nav-links">
+    <li><a href="#about"      data-i18n="nav.about">About</a></li>
+    <li><a href="#skills"     data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+    <li><a href="#projects"   data-i18n="nav.projects">Projects</a></li>
+    <li><a href="#education"  data-i18n="nav.education">Education</a></li>
+    <li><a href="#contact"    data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="ctrl-btn" id="themeToggle">☀️</button>
+    <select class="lang-sel" id="langSelect">
+      <option value="en">EN</option>
+      <option value="ar">AR</option>
+      <option value="fr">FR</option>
+    </select>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#about"      data-i18n="nav.about"      onclick="closeMob()">About</a>
+  <a href="#skills"     data-i18n="nav.skills"     onclick="closeMob()">Skills</a>
+  <a href="#experience" data-i18n="nav.experience" onclick="closeMob()">Experience</a>
+  <a href="#projects"   data-i18n="nav.projects"   onclick="closeMob()">Projects</a>
+  <a href="#education"  data-i18n="nav.education"  onclick="closeMob()">Education</a>
+  <a href="#contact"    data-i18n="nav.contact"    onclick="closeMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+    <div class="grid-bg"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge" data-i18n="hero.badge">Available for new opportunities</div>
+    <h1 class="hero-name">Mary<em>Ashraf Labib</em></h1>
+    <p class="hero-tagline" data-i18n-html="hero.tagline"><strong>Full Stack Developer</strong> crafting high-performance systems. Angular · React · Java · C++ · gRPC</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-p" data-i18n="hero.cta1">View Projects →</a>
+      <a href="#contact"  class="btn-o" data-i18n="hero.cta2">Get in touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">2+</div><div class="stat-l" data-i18n="stat.exp">Years exp.</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l" data-i18n="stat.prod">Products shipped</div></div>
+      <div class="stat"><div class="stat-n">3.47</div><div class="stat-l">GPA</div></div>
+      <div class="stat"><div class="stat-n">10+</div><div class="stat-l" data-i18n="stat.tech">Technologies</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-tag" data-i18n="nav.about">About</div>
+  <h2 class="sec-title" data-i18n-html="about.title">Who I <em>am</em><em>am</em></h2>
+  <div class="about-grid">
+    <div class="about-text fi">
+      <p data-i18n="about.p1">I'm a Full Stack Developer with a degree in Communication &amp; Computer Engineering from Cairo University, and a Software Diploma from Siemens Academy. I thrive at the intersection of clean architecture and great user experience.</p>
+      <p data-i18n-html="about.p2">Currently at <strong>Crossworkers</strong>, I work with a Japan-based telecom solutions company to build and improve frontend features, gRPC services, and REST APIs across distributed Agile teams spanning Europe.</p>
+      <p data-i18n="about.p3">I care deeply about code quality, performance, and writing software that scales. When I'm not coding, I'm probably competing in ECPC or exploring new web technologies.</p>
+      <div class="about-links">
+        <a href="https://linkedin.com/in/Mary-Labib" target="_blank" rel="noopener" class="pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/Mary-ashraf" target="_blank" rel="noopener" class="pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" style="fill:var(--text2)"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.hackerrank.com/profile/mary_labib01" target="_blank" rel="noopener" class="pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#00EA64"><path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm-.188 18.766c-.63 0-1.094-.473-1.094-1.094s.463-1.094 1.094-1.094 1.094.473 1.094 1.094-.463 1.094-1.094 1.094zm3.836-5.32c-.63 0-1.094-.473-1.094-1.094V8.234c0-.63.463-1.094 1.094-1.094s1.094.463 1.094 1.094v4.118c0 .621-.463 1.094-1.094 1.094zm-7.672 0c-.63 0-1.094-.473-1.094-1.094V8.234c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v4.118c0 .621-.464 1.094-1.094 1.094zm3.836.01c-.63 0-1.094-.473-1.094-1.094v-1.36H9.07v1.36c0 .621-.464 1.094-1.094 1.094s-1.094-.473-1.094-1.094V8.234c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v1.36h1.648v-1.36c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v4.128c0 .621-.464 1.094-1.094 1.094z"/></svg>
+          HackerRank
+        </a>
+        <a href="mailto:mary.ashraf12@gmail.com" class="pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+    <div class="about-card fi s1">
+      <div class="info-row"><span class="lbl" data-i18n="about.location">Location</span><span class="val">Giza, Egypt 🇪🇬</span></div>
+      <div class="info-row"><span class="lbl" data-i18n="about.role">Current Role</span><span class="val" data-i18n="about.roleVal">Full Stack Developer @ Crossworkers</span></div>
+      <div class="info-row"><span class="lbl" data-i18n="about.edu">Education</span><span class="val" data-i18n="about.eduVal">B.Sc. Electrical Eng. — Cairo University</span></div>
+      <div class="info-row"><span class="lbl" data-i18n="about.langs">Languages</span><span class="val">English · Arabic · Français</span></div>
+      <div class="info-row"><span class="lbl" data-i18n="about.focus">Focus</span><span class="val" data-i18n="about.focusVal">Frontend Architecture, Distributed Systems</span></div>
+      <div class="info-row"><span class="lbl">HackerRank</span><span class="val"><a href="https://www.hackerrank.com/profile/mary_labib01" target="_blank" rel="noopener" style="color:var(--teal)">mary_labib01</a></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-tag" data-i18n="nav.skills">Skills</div>
+  <h2 class="sec-title" data-i18n-html="skills.title">Technical <em>Toolkit</em><em>Toolkit</em></h2>
+  <div class="skills-grid">
+    <div class="skill-g fi"><div class="sg-title" data-i18n="skills.frontend">Frontend</div><div class="chips"><span class="chip">Angular 14–21</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">PrimeNG</span><span class="chip">Redux</span><span class="chip">HTML / CSS</span></div></div>
+    <div class="skill-g fi s1"><div class="sg-title" data-i18n="skills.backend">Backend &amp; APIs</div><div class="chips"><span class="chip">Java</span><span class="chip">gRPC</span><span class="chip">REST APIs</span><span class="chip">WebSockets</span><span class="chip">Protocol Buffers</span><span class="chip">.NET / C#</span></div></div>
+    <div class="skill-g fi s2"><div class="sg-title" data-i18n="skills.languages">Programming Languages</div><div class="chips"><span class="chip">C++</span><span class="chip">C</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">C#</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">MATLAB</span><span class="chip">VHDL</span><span class="chip">Assembly</span></div></div>
+    <div class="skill-g fi s3"><div class="sg-title" data-i18n="skills.testing">Testing &amp; Quality</div><div class="chips"><span class="chip">Jasmine / Karma</span><span class="chip">JUnit</span><span class="chip">Smoke Testing</span><span class="chip">Code Reviews</span></div></div>
+    <div class="skill-g fi"><div class="sg-title" data-i18n="skills.databases">Databases</div><div class="chips"><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">SQL Server</span></div></div>
+    <div class="skill-g fi s1"><div class="sg-title" data-i18n="skills.devops">DevOps &amp; Tools</div><div class="chips"><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Ubuntu</span><span class="chip">Bash</span><span class="chip">Apache Proxy</span><span class="chip">tshark</span><span class="chip">Agile / Scrum</span></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-tag" data-i18n="nav.experience">Experience</div>
+  <h2 class="sec-title" data-i18n-html="exp.title">Work <em>History</em><em>History</em></h2>
+  <div class="timeline">
+    <div class="tl-item fi">
+      <div class="tl-dot"></div>
+      <div class="tl-meta"><span>Oct 2023 – <span data-i18n="misc.present">Present</span></span><span class="co">Crossworkers</span><span>New Cairo, Egypt</span></div>
+      <div class="tl-title" data-i18n="exp1.title">Full Stack Developer</div>
+      <ul class="tl-list">
+        <li data-i18n="exp1.b1">Developed and enhanced frontend features across Angular 14–21 for 3 products, improving performance and UX with PrimeNG components.</li>
+        <li data-i18n="exp1.b2">Implemented Java gRPC services and REST APIs to support expanding system functionality and cross-service communication.</li>
+        <li data-i18n="exp1.b3">Wrote comprehensive client-side (Jasmine/Karma) and server-side (JUnit) automated tests, reducing regressions significantly.</li>
+        <li data-i18n="exp1.b4">Conducted code reviews, mentored team members, and collaborated across distributed Agile hybrid teams in Europe.</li>
+        <li data-i18n="exp1.b5">Integrated a web-based packet viewer, leveraged tshark for packet analysis, and configured Apache reverse proxy &amp; load balancing.</li>
+      </ul>
+      <div class="tl-tags"><span class="tag">Angular</span><span class="tag">Java</span><span class="tag">gRPC</span><span class="tag">PrimeNG</span><span class="tag">JUnit</span><span class="tag">Apache</span></div>
+    </div>
+    <div class="tl-item fi s1">
+      <div class="tl-dot"></div>
+      <div class="tl-meta"><span>Jul 2023 – Oct 2023</span><span class="co">Crossworkers</span><span>New Cairo, Egypt</span></div>
+      <div class="tl-title" data-i18n="exp2.title">Full Stack Developer Intern</div>
+      <ul class="tl-list"><li data-i18n="exp2.b1">Joined the development team, ramped up on the telecom product stack, and converted to a full role within 3 months.</li></ul>
+      <div class="tl-tags"><span class="tag">Angular</span><span class="tag">TypeScript</span></div>
+    </div>
+    <div class="tl-item fi s2">
+      <div class="tl-dot"></div>
+      <div class="tl-meta"><span>Jul 2022 – Aug 2022</span><span class="co">Digital Factory — Banque Misr</span><span>5th Settlement, Egypt</span></div>
+      <div class="tl-title" data-i18n="exp3.title">Frontend Developer Intern</div>
+      <ul class="tl-list">
+        <li data-i18n="exp3.b1">Collaborated in a cross-functional team of 7 across frontend, backend, iOS, and Android.</li>
+        <li data-i18n="exp3.b2">Executed two projects with Angular and TypeScript and observed Scrum applied in real banking product development.</li>
+      </ul>
+      <div class="tl-tags"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">Scrum</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-tag" data-i18n="nav.projects">Projects</div>
+  <h2 class="sec-title" data-i18n-html="proj.title">Selected <em>Work</em><em>Work</em></h2>
+  <div class="proj-grid">
+    <div class="proj-card fi"><span class="proj-lbl" data-i18n="proj.featured">⭐ Graduation Project</span><div class="proj-title" data-i18n="proj1.title">OTN Engine</div><p class="proj-desc" data-i18n="proj1.desc">High-performance multithreaded virtual tool for pre-silicon validation of Optical Transport Network protocols — traffic generation, error injection, and protocol validation. Sponsored by Siemens EDA.</p><div class="proj-foot"><span class="tag">C++</span><span class="tag">Angular</span><span class="tag">gRPC</span><span class="tag">WebSockets</span><span class="tag">PrimeNG</span><span class="tag">Protobuf</span></div></div>
+    <div class="proj-card fi s1"><span class="proj-lbl">🐦 Full Stack</span><div class="proj-title" data-i18n="proj2.title">Twitter Clone</div><p class="proj-desc" data-i18n="proj2.desc">Full-stack Twitter clone integrated with a backend. Implements standard user features and admin controls, documented with JSDoc and covered with Jest tests.</p><div class="proj-foot"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">Jest</span><span class="tag">JSDoc</span><span class="tag">HTML/CSS</span></div></div>
+    <div class="proj-card fi s2"><span class="proj-lbl">☕ Frontend</span><div class="proj-title" data-i18n="proj3.title">Coffee Shop E-Commerce</div><p class="proj-desc" data-i18n="proj3.desc">Fully responsive e-commerce website for a coffee shop, simulating an online shopping experience with clean UI and smooth interactions.</p><div class="proj-foot"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">SCSS</span></div></div>
+    <div class="proj-card fi"><span class="proj-lbl">🔍 Full Stack</span><div class="proj-title" data-i18n="proj4.title">Search Engine</div><p class="proj-desc" data-i18n="proj4.desc">Search engine with a Java crawler and ranking backend, displaying results through an Angular UI — end-to-end from indexing to presentation.</p><div class="proj-foot"><span class="tag">Java</span><span class="tag">Angular</span><span class="tag">Algorithms</span></div></div>
+    <div class="proj-card fi s1"><span class="proj-lbl">🎮 Graphics</span><div class="proj-title" data-i18n="proj5.title">Game Engine</div><p class="proj-desc" data-i18n="proj5.desc">Implemented core game engine concepts — shaders, materials, lighting, and textures using OpenGL and Unity, culminating in a playable game.</p><div class="proj-foot"><span class="tag">OpenGL</span><span class="tag">Unity</span><span class="tag">C++</span></div></div>
+    <div class="proj-card fi s2"><span class="proj-lbl">⚙️ Compilers</span><div class="proj-title" data-i18n="proj6.title">Compiler</div><p class="proj-desc" data-i18n="proj6.desc">Compiler built using lex and yacc, covering lexical analysis and parsing stages of a language processing pipeline.</p><div class="proj-foot"><span class="tag">Lex</span><span class="tag">Yacc</span><span class="tag">C</span></div></div>
+    <div class="proj-card fi"><span class="proj-lbl">🔐 Hardware Security</span><div class="proj-title" data-i18n="proj7.title">AES Encryption</div><p class="proj-desc" data-i18n="proj7.desc">AES encryption and decryption on FPGA supporting 128, 192, and 256-bit keys, implemented in Verilog using Quartus.</p><div class="proj-foot"><span class="tag">FPGA</span><span class="tag">Verilog</span><span class="tag">Quartus</span></div></div>
+    <div class="proj-card fi s1"><span class="proj-lbl">🌐 Networking</span><div class="proj-title" data-i18n="proj8.title">Data Link Layer Simulation</div><p class="proj-desc" data-i18n="proj8.desc">Simulates data link layer protocols and their core functionalities using OMNeT++ network simulation framework.</p><div class="proj-foot"><span class="tag">OMNeT++</span><span class="tag">Networking</span></div></div>
+    <div class="proj-card fi s2"><span class="proj-lbl">🖥️ Desktop App</span><div class="proj-title" data-i18n="proj9.title">Car Rental System</div><p class="proj-desc" data-i18n="proj9.desc">Desktop application in C# and .NET with full CRUD operations for rental data management, integrated with SQL Server.</p><div class="proj-foot"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">SQL Server</span></div></div>
+    <div class="proj-card fi"><span class="proj-lbl">🕹️ Low-level</span><div class="proj-title" data-i18n="proj10.title">Microprocessor Game</div><p class="proj-desc" data-i18n="proj10.desc">2-player game using Assembly for game logic and serial communication for networked gameplay or chat between two players.</p><div class="proj-foot"><span class="tag">Assembly</span><span class="tag">Serial Comm.</span></div></div>
+    <div class="proj-card fi s1"><span class="proj-lbl">🔌 Hardware</span><div class="proj-title" data-i18n="proj11.title">Harvard Pipelined Processor</div><p class="proj-desc" data-i18n="proj11.desc">Full pipelined processor in VHDL with hazard detection and forwarding units, based on the Harvard architecture.</p><div class="proj-foot"><span class="tag">VHDL</span><span class="tag">Computer Architecture</span></div></div>
+    <div class="proj-card fi s2"><span class="proj-lbl">⚙️ Systems</span><div class="proj-title" data-i18n="proj12.title">OS Scheduler</div><p class="proj-desc" data-i18n="proj12.desc">Process scheduler in C implementing four classic algorithms: SJF, HPF, Round Robin, and Multi-Level Feedback Queue (MLFQ).</p><div class="proj-foot"><span class="tag">C</span><span class="tag">OS</span><span class="tag">Algorithms</span></div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-tag" data-i18n="nav.education">Education</div>
+  <h2 class="sec-title" data-i18n-html="edu.title">Academic <em>Background</em><em>Background</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card fi"><div class="edu-deg" data-i18n="edu1.deg">B.Sc. Electrical Engineering — CCEC Track</div><div class="edu-sch">Cairo University — Faculty of Engineering</div><div class="edu-date">Sep 2019 – Jun 2024 · GPA 3.47</div><p class="edu-desc" data-i18n="edu1.desc">Communication and Computer Engineering track. Strong foundation in algorithms, data structures, networking, and hardware design.</p></div>
+    <div class="edu-card fi s1"><div class="edu-deg" data-i18n="edu2.deg">Software Diploma — Desktop Track</div><div class="edu-sch">Siemens Academy</div><div class="edu-date">Sep 2023 – Feb 2024</div><p class="edu-desc" data-i18n="edu2.desc">Intensive software engineering program focused on desktop application development, clean architecture, and professional software practices.</p></div>
+    <div class="edu-card fi s2"><div class="edu-deg">IGCSE</div><div class="edu-sch">Ramses College for Girls</div><div class="edu-date">Sep 2017 – Jun 2019 · Cairo, Egypt</div><p class="edu-desc" data-i18n="edu3.desc">International General Certificate of Secondary Education — strong foundation in sciences and mathematics.</p></div>
+    <div class="edu-card fi s3"><div class="edu-deg" data-i18n="edu4.deg">The Ultimate React Course 2025</div><div class="edu-sch">Udemy — Jonas Schmedtmann</div><div class="edu-date" data-i18n="edu4.date">Feb 2026 – Present</div><p class="edu-desc" data-i18n="edu4.desc">Deep dive into modern React — hooks, performance optimization, and advanced patterns. Expanding frontend expertise.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-tag" data-i18n="nav.contact">Contact</div>
+  <h2 class="sec-title" data-i18n-html="contact.title">Let's <em>Connect</em><em>Connect</em></h2>
+  <div class="contact-grid">
+    <div class="contact-links fi">
+      <a href="mailto:mary.ashraf12@gmail.com" class="ci">
+        <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+        <div class="ci-info"><span class="ci-lbl" data-i18n="contact.email">Email</span><span>mary.ashraf12@gmail.com</span></div>
+      </a>
+      <a href="tel:+201286383991" class="ci">
+        <div class="ci-icon">📞</div>
+        <div class="ci-info"><span class="ci-lbl" data-i18n="contact.phone">Phone</span><span>+20 128 638 3991</span></div>
+      </a>
+      <a href="https://linkedin.com/in/Mary-Labib" target="_blank" rel="noopener" class="ci">
+        <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+        <div class="ci-info"><span class="ci-lbl">LinkedIn</span><span>linkedin.com/in/Mary-Labib</span></div>
+      </a>
+      <a href="https://github.com/Mary-ashraf" target="_blank" rel="noopener" class="ci">
+        <div class="ci-icon" style="background:var(--surface2)"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:var(--text)"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></div>
+        <div class="ci-info"><span class="ci-lbl">GitHub</span><span>github.com/Mary-ashraf</span></div>
+      </a>
+      <a href="https://www.hackerrank.com/profile/mary_labib01" target="_blank" rel="noopener" class="ci">
+        <div class="ci-icon hr"><svg width="20" height="20" viewBox="0 0 24 24" fill="#00EA64"><path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm-.188 18.766c-.63 0-1.094-.473-1.094-1.094s.463-1.094 1.094-1.094 1.094.473 1.094 1.094-.463 1.094-1.094 1.094zm3.836-5.32c-.63 0-1.094-.473-1.094-1.094V8.234c0-.63.463-1.094 1.094-1.094s1.094.463 1.094 1.094v4.118c0 .621-.463 1.094-1.094 1.094zm-7.672 0c-.63 0-1.094-.473-1.094-1.094V8.234c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v4.118c0 .621-.464 1.094-1.094 1.094zm3.836.01c-.63 0-1.094-.473-1.094-1.094v-1.36H9.07v1.36c0 .621-.464 1.094-1.094 1.094s-1.094-.473-1.094-1.094V8.234c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v1.36h1.648v-1.36c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v4.128c0 .621-.464 1.094-1.094 1.094z"/></svg></div>
+        <div class="ci-info"><span class="ci-lbl">HackerRank</span><span>mary_labib01</span></div>
+      </a>
+      <div class="ci" style="cursor:default">
+        <div class="ci-icon">📍</div>
+        <div class="ci-info"><span class="ci-lbl" data-i18n="contact.location">Location</span><span data-i18n="contact.locationVal">Giza, Egypt</span></div>
+      </div>
+    </div>
+    <form class="contact-form fi s1" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="fg"><label class="flbl" data-i18n="form.name">Name</label><input class="finp" id="fname" type="text" required data-i18n-placeholder="form.namePh" placeholder="Your name"></div>
+      <div class="fg"><label class="flbl" data-i18n="form.email">Email</label><input class="finp" id="femail" type="email" required placeholder="your@email.com"></div>
+      <div class="fg"><label class="flbl" data-i18n="form.message">Message</label><textarea class="ftxt" id="fmsg" required data-i18n-placeholder="form.messagePh" placeholder="Hello Mary, I'd love to..."></textarea></div>
+      <button type="submit" id="submitBtn" class="btn-p" style="align-self:flex-start" data-i18n="form.send">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-name">Mary Ashraf Labib</div>
+  <div class="foot-links">
+    <a href="https://linkedin.com/in/Mary-Labib" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/Mary-ashraf" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" style="fill:var(--text3)"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="https://www.hackerrank.com/profile/mary_labib01" target="_blank" rel="noopener" aria-label="HackerRank"><svg width="18" height="18" viewBox="0 0 24 24" fill="#00EA64"><path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm-.188 18.766c-.63 0-1.094-.473-1.094-1.094s.463-1.094 1.094-1.094 1.094.473 1.094 1.094-.463 1.094-1.094 1.094zm3.836-5.32c-.63 0-1.094-.473-1.094-1.094V8.234c0-.63.463-1.094 1.094-1.094s1.094.463 1.094 1.094v4.118c0 .621-.463 1.094-1.094 1.094zm-7.672 0c-.63 0-1.094-.473-1.094-1.094V8.234c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v4.118c0 .621-.464 1.094-1.094 1.094zm3.836.01c-.63 0-1.094-.473-1.094-1.094v-1.36H9.07v1.36c0 .621-.464 1.094-1.094 1.094s-1.094-.473-1.094-1.094V8.234c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v1.36h1.648v-1.36c0-.63.464-1.094 1.094-1.094s1.094.463 1.094 1.094v4.128c0 .621-.464 1.094-1.094 1.094z"/></svg></a>
+    <a href="mailto:mary.ashraf12@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--text3)"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></a>
+  </div>
+  <div class="foot-copy" data-i18n="footer.copy">© 2026 · Built with passion</div>
+</footer>
+
+
+<!-- MATCH ME FLOATING BUTTON -->
+<!-- <button class="match-fab" onclick="openMatchModal()">
+  <span class="match-fab-dot"></span>
+  Check job match
+</button> -->
+
+<!-- MATCH MODAL -->
+<div class="match-overlay" id="matchOverlay" onclick="overlayClick(event)">
+  <div class="match-modal" id="matchModal">
+    <div class="modal-head">
+      <h3>Job <em>Match</em> Check</h3>
+      <button class="modal-close" onclick="closeMatchModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="jd-wrap">
+        <div class="jd-label">Paste a job description</div>
+        <textarea class="jd-input" id="jdInput" placeholder="e.g. We are looking for a Senior Frontend Developer with Angular 3+ years, TypeScript, REST APIs required. Docker and gRPC are a plus..."></textarea>
+      </div>
+      <div class="jd-actions">
+        <button class="match-run-btn" id="matchRunBtn" onclick="runMatch()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg>
+          Analyze match
+        </button>
+        <span class="match-hint" id="matchHint"></span>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="match-results" id="matchResults">
+
+        <!-- Score ring + stats -->
+        <div class="score-hero">
+          <div class="ring-wrap">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle class="ring-bg" cx="50" cy="50" r="42"/>
+              <circle class="ring-fill" id="ringFill" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="264"/>
+            </svg>
+            <div class="ring-label">
+              <span class="ring-pct" id="ringPct">0%</span>
+              <span class="ring-sub">match</span>
+            </div>
+          </div>
+          <div class="score-stats">
+            <div class="score-stat"><div class="score-stat-n" id="statReq">—</div><div class="score-stat-l">required skills</div></div>
+            <div class="score-stat"><div class="score-stat-n" id="statOpt">—</div><div class="score-stat-l">nice-to-haves</div></div>
+            <div class="score-stat"><div class="score-stat-n" id="statProj">—</div><div class="score-stat-l">top project fit</div></div>
+            <div class="score-stat"><div class="score-stat-n" id="statRole">—</div><div class="score-stat-l">top role fit</div></div>
+          </div>
+        </div>
+
+        <!-- Breakdown bars -->
+        <div class="breakdown" id="breakdownBars"></div>
+
+        <!-- Required skills chips -->
+        <div class="chips-section">
+          <div class="chips-section-title">Required skills</div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div>you have it</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--rose)"></div>missing</div>
+          </div>
+          <div class="chips-row" id="reqChips"></div>
+        </div>
+
+        <!-- Optional skills chips -->
+        <div class="chips-section" id="optSection">
+          <div class="chips-section-title">Nice-to-have skills</div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>you have it</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--text3)"></div>missing</div>
+          </div>
+          <div class="chips-row" id="optChips"></div>
+        </div>
+
+        <!-- Projects + Roles ranked -->
+        <div class="ranked-grid">
+          <div class="ranked-card">
+            <div class="ranked-card-title">Top matching projects</div>
+            <div id="projRanked"></div>
+          </div>
+          <div class="ranked-card">
+            <div class="ranked-card-title">Top matching roles</div>
+            <div id="roleRanked"></div>
+          </div>
+        </div>
+
+      </div><!-- /match-results -->
+    </div><!-- /modal-body -->
+  </div><!-- /match-modal -->
+</div><!-- /match-overlay -->
+
+<script>
+const T = {
+  en: {
+    "nav.about":"About","nav.skills":"Skills","nav.experience":"Experience","nav.projects":"Projects","nav.education":"Education","nav.contact":"Contact",
+    "hero.badge":"Available for new opportunities",
+    "hero.tagline":"<strong>Full Stack Developer</strong> crafting high-performance systems. Angular · React · Java · C++ · gRPC",
+    "hero.cta1":"View Projects →","hero.cta2":"Get in touch",
+    "stat.exp":"Years exp.","stat.prod":"Products shipped","stat.tech":"Technologies",
+    "about.title":"Who I <em>am</em>",
+    "about.p1":"I'm a Full Stack Developer with a degree in Communication & Computer Engineering from Cairo University, and a Software Diploma from Siemens Academy. I thrive at the intersection of clean architecture and great user experience.",
+    "about.p2":"Currently at <strong>Crossworkers</strong>, I work with a Japan-based telecom solutions company to build and improve frontend features, gRPC services, and REST APIs across distributed Agile teams spanning Europe.",
+    "about.p3":"I care deeply about code quality, performance, and writing software that scales. When I'm not coding, I'm probably competing in ECPC or exploring new web technologies.",
+    "about.location":"Location","about.role":"Current Role","about.roleVal":"Full Stack Developer @ Crossworkers",
+    "about.edu":"Education","about.eduVal":"B.Sc. Electrical Eng. — Cairo University",
+    "about.langs":"Languages","about.focus":"Focus","about.focusVal":"Frontend Architecture, Distributed Systems",
+    "skills.title":"Technical <em>Toolkit</em>","skills.frontend":"Frontend","skills.backend":"Backend & APIs",
+    "skills.languages":"Programming Languages","skills.testing":"Testing & Quality","skills.databases":"Databases","skills.devops":"DevOps & Tools",
+    "exp.title":"Work <em>History</em>","exp1.title":"Full Stack Developer",
+    "exp1.b1":"Developed and enhanced frontend features across Angular 14–21 for 3 products, improving performance and UX with PrimeNG components.",
+    "exp1.b2":"Implemented Java gRPC services and REST APIs to support expanding system functionality and cross-service communication.",
+    "exp1.b3":"Wrote comprehensive client-side (Jasmine/Karma) and server-side (JUnit) automated tests, reducing regressions significantly.",
+    "exp1.b4":"Conducted code reviews, mentored team members, and collaborated across distributed Agile hybrid teams in Europe.",
+    "exp1.b5":"Integrated a web-based packet viewer, leveraged tshark for packet analysis, and configured Apache reverse proxy & load balancing.",
+    "exp2.title":"Full Stack Developer Intern",
+    "exp2.b1":"Joined the development team, ramped up on the telecom product stack, and converted to a full role within 3 months.",
+    "exp3.title":"Frontend Developer Intern",
+    "exp3.b1":"Collaborated in a cross-functional team of 7 across frontend, backend, iOS, and Android.",
+    "exp3.b2":"Executed two projects with Angular and TypeScript and observed Scrum applied in real banking product development.",
+    "proj.title":"Selected <em>Work</em>","proj.featured":"⭐ Graduation Project",
+    "proj1.title":"OTN Engine","proj1.desc":"High-performance multithreaded virtual tool for pre-silicon validation of OTN protocols — traffic generation, error injection, and protocol validation. Sponsored by Siemens EDA.",
+    "proj2.title":"Twitter Clone","proj2.desc":"Full-stack Twitter clone integrated with a backend. Implements standard user features and admin controls, documented with JSDoc and covered with Jest tests.",
+    "proj3.title":"Coffee Shop E-Commerce","proj3.desc":"Fully responsive e-commerce website for a coffee shop, simulating an online shopping experience with clean UI and smooth interactions.",
+    "proj4.title":"Search Engine","proj4.desc":"Search engine with a Java crawler and ranking backend, displaying results through an Angular UI — end-to-end from indexing to presentation.",
+    "proj5.title":"Game Engine","proj5.desc":"Implemented core game engine concepts — shaders, materials, lighting, and textures using OpenGL and Unity, culminating in a playable game.",
+    "proj6.title":"Compiler","proj6.desc":"Compiler built using lex and yacc, covering lexical analysis and parsing stages of a language processing pipeline.",
+    "proj7.title":"AES Encryption","proj7.desc":"AES encryption and decryption on FPGA supporting 128, 192, and 256-bit keys, implemented in Verilog using Quartus.",
+    "proj8.title":"Data Link Layer Simulation","proj8.desc":"Simulates data link layer protocols and their core functionalities using OMNeT++ network simulation framework.",
+    "proj9.title":"Car Rental System","proj9.desc":"Desktop application in C# and .NET with full CRUD operations for rental data management, integrated with SQL Server.",
+    "proj10.title":"Microprocessor Game","proj10.desc":"2-player game using Assembly for game logic and serial communication for networked gameplay or chat between two players.",
+    "proj11.title":"Harvard Pipelined Processor","proj11.desc":"Full pipelined processor in VHDL with hazard detection and forwarding units, based on the Harvard architecture.",
+    "proj12.title":"OS Scheduler","proj12.desc":"Process scheduler in C implementing four classic algorithms: SJF, HPF, Round Robin, and Multi-Level Feedback Queue (MLFQ).",
+    "edu.title":"Academic <em>Background</em>",
+    "edu1.deg":"B.Sc. Electrical Engineering — CCEC Track","edu1.desc":"Communication and Computer Engineering track. Strong foundation in algorithms, data structures, networking, and hardware design.",
+    "edu2.deg":"Software Diploma — Desktop Track","edu2.desc":"Intensive software engineering program focused on desktop application development, clean architecture, and professional software practices.",
+    "edu3.desc":"International General Certificate of Secondary Education — strong foundation in sciences and mathematics.",
+    "edu4.deg":"The Ultimate React Course 2025","edu4.date":"Feb 2026 – Present","edu4.desc":"Deep dive into modern React — hooks, performance optimization, and advanced patterns. Expanding frontend expertise.",
+    "contact.title":"Let's <em>Connect</em>","contact.email":"Email","contact.phone":"Phone","contact.location":"Location","contact.locationVal":"Giza, Egypt",
+    "form.name":"Name","form.namePh":"Your name","form.email":"Email","form.message":"Message","form.messagePh":"Hello Mary, I'd love to...","form.send":"Send Message →",
+    "misc.present":"Present","footer.copy":"© 2026 · Built with passion"
+  },
+  ar: {
+    "nav.about":"عني","nav.skills":"المهارات","nav.experience":"الخبرة","nav.projects":"المشاريع","nav.education":"التعليم","nav.contact":"تواصل",
+    "hero.badge":"متاحة لفرص جديدة",
+    "hero.tagline":"<strong>Full Stack Developer</strong> متخصصة في بناء أنظمة عالية الأداء. Angular · React · Java · C++ · gRPC",
+    "hero.cta1":"عرض المشاريع ←","hero.cta2":"تواصل معي",
+    "stat.exp":"سنوات خبرة","stat.prod":"منتجات مُطوَّرة","stat.tech":"تقنيات",
+    "about.title":"من <em>أنا</em>",
+    "about.p1":"أنا Full Stack Developer حاصلة على بكالوريوس في هندسة الاتصالات والحاسبات من جامعة القاهرة، ودبلوم برمجي من أكاديمية Siemens. أجمع بين بناء أنظمة نظيفة المعمارية وتجربة مستخدم متميزة.",
+    "about.p2":"أعمل حاليًا في <strong>Crossworkers</strong> مع شركة اتصالات يابانية، حيث أطور خصائص الـ Frontend وخدمات gRPC وواجهات REST APIs ضمن فرق Agile موزعة في أوروبا.",
+    "about.p3":"أهتم كثيرًا بجودة الكود والأداء وكتابة برمجيات قابلة للتوسع. خارج العمل، تجدينني في مسابقات ECPC أو أستكشف تقنيات الويب الحديثة.",
+    "about.location":"الموقع","about.role":"الدور الحالي","about.roleVal":"Full Stack Developer @ Crossworkers",
+    "about.edu":"التعليم","about.eduVal":"بكالوريوس هندسة كهربائية — جامعة القاهرة",
+    "about.langs":"اللغات","about.focus":"مجالات التركيز","about.focusVal":"معمارية Frontend، الأنظمة الموزعة",
+    "skills.title":"الأدوات <em>التقنية</em>","skills.frontend":"Frontend","skills.backend":"Backend & APIs",
+    "skills.languages":"لغات البرمجة","skills.testing":"Testing والجودة","skills.databases":"قواعد البيانات","skills.devops":"DevOps والأدوات",
+    "exp.title":"المسيرة <em>المهنية</em>","exp1.title":"Full Stack Developer",
+    "exp1.b1":"طورت وحسّنت خصائص الـ Frontend عبر إصدارات Angular 14–21 لثلاثة منتجات، مع تحسين الأداء وتجربة المستخدم باستخدام مكونات PrimeNG.",
+    "exp1.b2":"نفّذت خدمات Java gRPC وواجهات REST APIs لدعم وظائف النظام المتنامية والتواصل بين الخدمات.",
+    "exp1.b3":"كتبت اختبارات آلية شاملة على جانب العميل (Jasmine/Karma) والخادم (JUnit)، مما أسهم في تقليل الأخطاء الرجعية.",
+    "exp1.b4":"أجريت Code Reviews وأرشدت أعضاء الفريق، وتعاونت مع فرق Agile هجينة موزعة في أوروبا.",
+    "exp1.b5":"دمجت أداة عرض الحزم، واستخدمت tshark لتحليل الشبكة، وضبطت إعدادات Apache Reverse Proxy وLoad Balancing.",
+    "exp2.title":"Full Stack Developer Intern",
+    "exp2.b1":"انضممت لفريق التطوير وتعلمت مكدس المنتجات، ثم انتقلت إلى دوام كامل خلال 3 أشهر.",
+    "exp3.title":"Frontend Developer Intern",
+    "exp3.b1":"تعاونت في فريق متعدد التخصصات من 7 أفراد: Frontend وBackend وiOS وAndroid.",
+    "exp3.b2":"نفّذت مشروعين بـ Angular وTypeScript، وشاهدت تطبيق Scrum في بيئة تطوير مصرفية حقيقية.",
+    "proj.title":"أبرز <em>المشاريع</em>","proj.featured":"⭐ مشروع التخرج",
+    "proj1.title":"OTN Engine","proj1.desc":"أداة افتراضية Multithreaded عالية الأداء لاختبار بروتوكولات OTN قبل تصنيع الدوائر — برعاية Siemens EDA.",
+    "proj2.title":"تطبيق تويتر","proj2.desc":"نسخة Full Stack من تويتر، مدمجة مع backend ومنشورة على الإنترنت، تدعم ميزات المستخدم العادي والمشرف مع اختبارات Jest وتوثيق JSDoc.",
+    "proj3.title":"متجر القهوة الإلكتروني","proj3.desc":"موقع تجارة إلكترونية متجاوب بالكامل لمحل قهوة، يحاكي تجربة التسوق عبر الإنترنت بواجهة أنيقة.",
+    "proj4.title":"محرك بحث","proj4.desc":"محرك بحث بـ Java للزحف والترتيب مع واجهة Angular لعرض النتائج — متكامل من الفهرسة حتى العرض.",
+    "proj5.title":"محرك ألعاب","proj5.desc":"تطبيق مفاهيم محرك الألعاب الأساسية: Shaders والإضاءة والمواد والنسيج باستخدام OpenGL وUnity مع تطوير لعبة كاملة.",
+    "proj6.title":"مترجم برمجي","proj6.desc":"Compiler مبني بـ lex وyacc يغطي مراحل التحليل المعجمي والتحليل النحوي.",
+    "proj7.title":"تشفير AES","proj7.desc":"تشفير وفك تشفير AES على FPGA بمفاتيح 128 و192 و256 بت باستخدام Verilog وQuartus.",
+    "proj8.title":"محاكاة طبقة ربط البيانات","proj8.desc":"محاكاة بروتوكولات طبقة Data Link ووظائفها الأساسية باستخدام OMNeT++.",
+    "proj9.title":"نظام تأجير السيارات","proj9.desc":"تطبيق سطح مكتب بـ .NET وC# يدعم عمليات CRUD الكاملة لإدارة بيانات التأجير، مدمج مع SQL Server.",
+    "proj10.title":"لعبة المعالج الدقيق","proj10.desc":"لعبة ثنائية اللاعبين بلغة Assembly مع اتصال تسلسلي للعب المتعدد أو الدردشة.",
+    "proj11.title":"Harvard Pipelined Processor","proj11.desc":"تنفيذ معالج Pipeline كامل بـ VHDL مع Hazard Detection وForwarding Units.",
+    "proj12.title":"OS Scheduler","proj12.desc":"جدولة العمليات بلغة C باستخدام أربع خوارزميات: SJF وHPF وRound Robin وMLFQ.",
+    "edu.title":"الخلفية <em>الأكاديمية</em>",
+    "edu1.deg":"بكالوريوس هندسة كهربائية — تخصص CCEC","edu1.desc":"مسار الاتصالات وهندسة الحاسبات. أساس قوي في الخوارزميات وهياكل البيانات والشبكات وتصميم الدوائر.",
+    "edu2.deg":"دبلوم برمجي — Desktop Track","edu2.desc":"برنامج مكثف في هندسة البرمجيات مع تركيز على تطوير تطبيقات سطح المكتب والمعمارية النظيفة.",
+    "edu3.desc":"شهادة الثانوية الدولية IGCSE مع أساس قوي في العلوم والرياضيات.",
+    "edu4.deg":"The Ultimate React Course 2025","edu4.date":"فبراير 2026 – حتى الآن","edu4.desc":"تعمق في React الحديث: Hooks وتحسين الأداء والأنماط المتقدمة. توسيع إتقان الـ Frontend.",
+    "contact.title":"لنتواصل <em>معًا</em>","contact.email":"البريد الإلكتروني","contact.phone":"الهاتف","contact.location":"الموقع","contact.locationVal":"الجيزة، مصر",
+    "form.name":"الاسم","form.namePh":"اسمك","form.email":"البريد الإلكتروني","form.message":"الرسالة","form.messagePh":"مرحبًا Mary، أودّ...","form.send":"إرسال الرسالة ←",
+    "misc.present":"حتى الآن","footer.copy":"© 2026 · صُنع بشغف"
+  },
+  fr: {
+    "nav.about":"À propos","nav.skills":"Compétences","nav.experience":"Expérience","nav.projects":"Projets","nav.education":"Formation","nav.contact":"Contact",
+    "hero.badge":"Disponible pour de nouvelles opportunités",
+    "hero.tagline":"<strong>Full Stack Developer</strong> spécialisée dans les systèmes haute performance. Angular · React · Java · C++ · gRPC",
+    "hero.cta1":"Voir les projets →","hero.cta2":"Me contacter",
+    "stat.exp":"Ans d'expérience","stat.prod":"Produits livrés","stat.tech":"Technologies",
+    "about.title":"Qui je <em>suis</em>",
+    "about.p1":"Je suis Full Stack Developer avec une licence en Génie Électrique (filière CCEC) de l'Université du Caire et un diplôme logiciel de l'Académie Siemens. Je m'épanouis à l'intersection d'une architecture propre et d'une excellente expérience utilisateur.",
+    "about.p2":"Actuellement chez <strong>Crossworkers</strong>, je travaille avec un prestataire télécom japonais pour développer des fonctionnalités frontend, des services gRPC et des REST APIs au sein d'équipes Agile distribuées en Europe.",
+    "about.p3":"Je tiens profondément à la qualité du code, aux performances et à l'évolutivité. En dehors du code, je participe à l'ECPC ou j'explore de nouvelles technologies web.",
+    "about.location":"Localisation","about.role":"Poste actuel","about.roleVal":"Full Stack Developer @ Crossworkers",
+    "about.edu":"Formation","about.eduVal":"Licence Génie Électrique — Université du Caire",
+    "about.langs":"Langues","about.focus":"Domaines de focus","about.focusVal":"Architecture Frontend, Systèmes Distribués",
+    "skills.title":"Boîte à <em>outils</em>","skills.frontend":"Frontend","skills.backend":"Backend & APIs",
+    "skills.languages":"Langages de programmation","skills.testing":"Tests & Qualité","skills.databases":"Bases de données","skills.devops":"DevOps & Outils",
+    "exp.title":"Parcours <em>professionnel</em>","exp1.title":"Full Stack Developer",
+    "exp1.b1":"Développé et amélioré des fonctionnalités frontend sous Angular 14–21 pour 3 produits, avec les composants PrimeNG pour une UX cohérente.",
+    "exp1.b2":"Implémenté des services Java gRPC et des REST APIs pour étendre les fonctionnalités système et la communication inter-services.",
+    "exp1.b3":"Écrit des tests automatisés côté client (Jasmine/Karma) et serveur (JUnit), réduisant significativement les régressions.",
+    "exp1.b4":"Conduit des Code Reviews, encadré des collègues et collaboré au sein d'équipes Agile hybrides distribuées en Europe.",
+    "exp1.b5":"Intégré un visualiseur de paquets web, utilisé tshark pour l'analyse réseau, et configuré Apache Reverse Proxy et Load Balancing.",
+    "exp2.title":"Full Stack Developer — Stage",
+    "exp2.b1":"Intégrée à l'équipe de développement, montée en compétences sur la stack télécom, et passage en CDI en 3 mois.",
+    "exp3.title":"Frontend Developer — Stage",
+    "exp3.b1":"Collaboré au sein d'une équipe transversale de 7 personnes : frontend, backend, iOS et Android.",
+    "exp3.b2":"Réalisé deux projets Angular/TypeScript et observé l'application de Scrum dans un contexte bancaire réel.",
+    "proj.title":"Travaux <em>sélectionnés</em>","proj.featured":"⭐ Projet de fin d'études",
+    "proj1.title":"OTN Engine","proj1.desc":"Outil virtuel multithreadé haute performance pour la validation pré-silicium des protocoles OTN — sponsorisé par Siemens EDA.",
+    "proj2.title":"Clone Twitter","proj2.desc":"Clone Twitter full-stack intégré avec un backend. Fonctionnalités utilisateur et admin, couvert par des tests Jest et documenté avec JSDoc.",
+    "proj3.title":"E-Commerce Café","proj3.desc":"Site e-commerce entièrement responsive pour un coffee shop, simulant une expérience d'achat en ligne avec une interface soignée.",
+    "proj4.title":"Moteur de Recherche","proj4.desc":"Moteur de recherche avec crawler Java et backend de classement, affichant les résultats via une interface Angular.",
+    "proj5.title":"Moteur de Jeu","proj5.desc":"Implémentation des concepts fondamentaux d'un moteur de jeu — shaders, matériaux, éclairage et textures avec OpenGL et Unity.",
+    "proj6.title":"Compilateur","proj6.desc":"Compilateur développé avec lex et yacc, couvrant l'analyse lexicale et syntaxique d'un pipeline de traitement de langage.",
+    "proj7.title":"Chiffrement AES","proj7.desc":"Chiffrement et déchiffrement AES sur FPGA supportant des clés de 128, 192 et 256 bits, en Verilog avec Quartus.",
+    "proj8.title":"Simulation Couche Liaison","proj8.desc":"Simulation des protocoles de la couche liaison de données et de leurs fonctionnalités avec OMNeT++.",
+    "proj9.title":"Système de Location de Voitures","proj9.desc":"Application desktop en C# et .NET avec CRUD complet, intégrée à SQL Server.",
+    "proj10.title":"Jeu Microprocesseur","proj10.desc":"Jeu 2 joueurs en Assembly avec communication série pour le multijoueur ou le chat.",
+    "proj11.title":"Harvard Pipelined Processor","proj11.desc":"Processeur pipeline complet en VHDL avec Hazard Detection et Forwarding Units.",
+    "proj12.title":"OS Scheduler","proj12.desc":"Ordonnanceur de processus en C implémentant quatre algorithmes : SJF, HPF, Round Robin et MLFQ.",
+    "edu.title":"Parcours <em>académique</em>",
+    "edu1.deg":"Licence Génie Électrique — Filière CCEC","edu1.desc":"Filière Communications et Informatique. Bases solides en algorithmes, structures de données, réseaux et conception matérielle.",
+    "edu2.deg":"Diplôme Logiciel — Desktop Track","edu2.desc":"Programme intensif de génie logiciel axé sur le développement d'applications desktop et l'architecture propre.",
+    "edu3.desc":"Certificat international IGCSE — bases solides en sciences et mathématiques.",
+    "edu4.deg":"The Ultimate React Course 2025","edu4.date":"Fév 2026 – Présent","edu4.desc":"Plongée dans React moderne : hooks, optimisation des performances et patterns avancés.",
+    "contact.title":"Prenons <em>contact</em>","contact.email":"E-mail","contact.phone":"Téléphone","contact.location":"Localisation","contact.locationVal":"Guizeh, Égypte",
+    "form.name":"Nom","form.namePh":"Votre nom","form.email":"E-mail","form.message":"Message","form.messagePh":"Bonjour Mary, je souhaiterais...","form.send":"Envoyer →",
+    "misc.present":"Présent","footer.copy":"© 2026 · Fait avec passion"
+  }
+};
+
+function applyLang(lang) {
+  const t = T[lang] || T.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k=el.getAttribute('data-i18n'); if(t[k]!==undefined) el.textContent=t[k]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { const k=el.getAttribute('data-i18n-html'); if(t[k]!==undefined) el.innerHTML=t[k]; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const k=el.getAttribute('data-i18n-placeholder'); if(t[k]!==undefined) el.placeholder=t[k]; });
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==='ar' ? 'rtl' : 'ltr';
+}
+
+const themeBtn = document.getElementById('themeToggle');
+let isDark = true;
+function setTheme(dark) {
+  isDark = dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('ml-theme', dark ? 'dark' : 'light');
+}
+themeBtn.addEventListener('click', () => setTheme(!isDark));
+const sv = localStorage.getItem('ml-theme');
+if (sv) setTheme(sv === 'dark');
+
+const langSel = document.getElementById('langSelect');
+langSel.addEventListener('change', e => { applyLang(e.target.value); localStorage.setItem('ml-lang', e.target.value); });
+const sl = localStorage.getItem('ml-lang') || 'en';
+langSel.value = sl;
+applyLang(sl);
+
+window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', scrollY > 20), {passive:true});
+
+const menuBtn = document.getElementById('menuBtn');
+const mobMenu = document.getElementById('mobMenu');
+menuBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+function closeMob() { mobMenu.classList.remove('open'); }
+
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
+}, {threshold:0.08});
+document.querySelectorAll('.fi').forEach(el => fadeObs.observe(el));
+
+const navAs = document.querySelectorAll('.nav-links a');
+new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); });
+}, {rootMargin:'-40% 0px -50% 0px'}).observe || document.querySelectorAll('section[id]').forEach(s => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); });
+  }, {rootMargin:'-40% 0px -50% 0px'}).observe(s);
+});
+// safe active nav
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); });
+}, {rootMargin:'-40% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const lang = langSel.value;
+  const name = document.getElementById('fname').value;
+  const email = document.getElementById('femail').value;
+  const msg = document.getElementById('fmsg').value;
+  const orig = btn.textContent;
+  btn.textContent = '✓ Sent!';
+  btn.style.background = 'var(--teal)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    btn.disabled = false;
+    document.getElementById('contactForm').reset();
+  }, 3000);
+  // Open mailto as fallback
+  window.location.href = `mailto:mary.ashraf12@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}%0A%0AFrom: ${encodeURIComponent(email)}`;
+}
+
+
+// ══════════════════════════════════════════
+//  MATCH ENGINE
+// ══════════════════════════════════════════
+const MATCH_CV = {
+  skills: [
+    "c++","c","java","python","c#","javascript","typescript","matlab","vhdl","assembly",
+    "react","angular","redux","primeng","html","css",".net","grpc","rest api","websockets",
+    "protobuf","mysql","mongodb","sql server","jasmine","karma","junit","jest",
+    "docker","ubuntu","bash","git","linux","apache","tshark","opengl","unity",
+    "agile","scrum","data structures","design patterns","algorithms","multithreading",
+    "code review","distributed systems","scss"
+  ],
+  projects:[
+    {name:"OTN Engine",      skills:["c++","angular","grpc","websockets","primeng","protobuf","multithreading","rest api"],weight:1.0},
+    {name:"Twitter Clone",   skills:["react","javascript","jest","html","css","rest api"],weight:0.95},
+    {name:"Coffee Shop",     skills:["angular","typescript","html","css","scss"],weight:0.85},
+    {name:"Search Engine",   skills:["java","angular","algorithms","data structures"],weight:0.75},
+    {name:"Car Rental",      skills:["c#",".net","sql server"],weight:0.7},
+    {name:"Game Engine",     skills:["c++","opengl","unity","algorithms"],weight:0.65},
+    {name:"Compiler",        skills:["c","algorithms"],weight:0.65},
+    {name:"OS Scheduler",    skills:["c","algorithms","data structures","multithreading"],weight:0.6},
+    {name:"Harvard Processor",skills:["vhdl","algorithms"],weight:0.5},
+  ],
+  roles:[
+    {title:"Full Stack Developer",     skills:["angular","typescript","java","grpc","rest api","jasmine","karma","junit","agile","scrum","code review","distributed systems","git"],weight:1.0,years:2},
+    {title:"Full Stack Intern",        skills:["angular","typescript","java","grpc"],weight:0.6,years:0.25},
+    {title:"Frontend Intern",          skills:["angular","typescript","scrum","agile"],weight:0.5,years:0.08}
+  ],
+  totalYears:2.5
+};
+
+const SKILLS_DB = [
+  "react","angular","typescript","javascript","html","css","redux","rxjs","primeng","vue","svelte","next.js","scss",
+  "java","c#",".net","python","node.js","spring boot","rest api","grpc","websockets","graphql","protobuf",
+  "c++","c","rust","go","vhdl","assembly","matlab","opengl","unity",
+  "sql","sql server","mysql","mongodb","postgresql","redis",
+  "jasmine","karma","junit","jest","cypress","unit testing","integration testing",
+  "docker","kubernetes","aws","azure","gcp","git","ci/cd","linux","ubuntu","bash","apache","nginx","tshark",
+  "agile","scrum","code review","design patterns","data structures","algorithms","microservices",
+  "distributed systems","multithreading"
+];
+const OPT_SIGS = ["nice to have","plus","preferred","bonus","advantage","desirable","ideally","good to have"];
+
+function mPreprocess(t){ return t.toLowerCase().replace(/[^a-z0-9\s#.+/]/g,' '); }
+
+function mClassify(jd){
+  const clean = mPreprocess(jd);
+  const req={}, opt={};
+  for(const sk of SKILLS_DB){
+    const esc = sk.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const re = new RegExp('\\b'+esc+'\\b','g');
+    let m;
+    while((m=re.exec(clean))!==null){
+      const ctx = clean.slice(Math.max(0,m.index-80), m.index+sk.length+80);
+      if(OPT_SIGS.some(s=>ctx.includes(s))) opt[sk]=(opt[sk]||0)+1;
+      else req[sk]=(req[sk]||0)+1;
+    }
+  }
+  return {req,opt};
+}
+
+function mSemanticMatch(cvSkills, jobSkills){
+  const jobList=Object.keys(jobSkills);
+  if(!jobList.length||!cvSkills.length) return {matched:[],missing:jobList};
+  const hit=new Set();
+  for(const cv of cvSkills){
+    for(const job of jobList){
+      if(cv===job||cv.includes(job)||job.includes(cv)){ hit.add(job); continue; }
+      const cw=cv.split(/\s+/),jw=job.split(/\s+/);
+      if(cw.some(w=>jw.includes(w)&&w.length>2)) hit.add(job);
+    }
+  }
+  return {matched:[...hit], missing:jobList.filter(j=>!hit.has(j))};
+}
+
+function mWScore(matched,jobSkills){
+  const tot=Object.values(jobSkills).reduce((a,b)=>a+b,0)||1;
+  return matched.reduce((s,j)=>s+(jobSkills[j]||0),0)/tot;
+}
+
+function mScoreProjects(projects,all){
+  const js=new Set(Object.keys(all)), tot=js.size||1;
+  return projects.map(p=>({name:p.name,score:Math.min((p.skills.filter(s=>js.has(s)).length/tot)*p.weight,1)}))
+    .sort((a,b)=>b.score-a.score);
+}
+
+function mScoreRoles(roles,all){
+  const js=new Set(Object.keys(all)), tot=js.size||1;
+  return roles.map(r=>({title:r.title,score:Math.min((r.skills.filter(s=>js.has(s)).length/tot)*r.weight+Math.min((r.years||0)*.02,.1),1)}))
+    .sort((a,b)=>b.score-a.score);
+}
+
+function mSenBonus(jd,yrs){
+  const lo=jd.toLowerCase();
+  const lvl={junior:[0,2],mid:[2,5],senior:[5,99],lead:[5,99],intern:[0,1],entry:[0,2]};
+  for(const[l,[lo2,hi]] of Object.entries(lvl)){
+    if(lo.includes(l)) return (yrs>=lo2&&yrs<=hi)?0.05:(yrs>hi?0.02:-0.03);
+  }
+  return 0;
+}
+
+function runMatchEngine(jd){
+  const {req,opt}=mClassify(jd);
+  const {matched:mReq,missing:misReq}=mSemanticMatch(MATCH_CV.skills,req);
+  const {matched:mOpt,missing:misOpt}=mSemanticMatch(MATCH_CV.skills,opt);
+  const rScore=mWScore(mReq,req);
+  const oScore=Object.keys(opt).length?mWScore(mOpt,opt):0;
+  const all={...req,...opt};
+  const projS=mScoreProjects(MATCH_CV.projects,all);
+  const roleS=mScoreRoles(MATCH_CV.roles,all);
+  const tp=projS[0]?.score||0, tr=roleS[0]?.score||0;
+  const sen=mSenBonus(jd,MATCH_CV.totalYears);
+  const raw=(0.65*rScore+0.10*oScore+0.12*tp+0.08*tr+0.05*sen)*100;
+  const reqCov=Object.keys(req).length?mReq.length/Object.keys(req).length*100:100;
+  const optCov=Object.keys(opt).length?mOpt.length/Object.keys(opt).length*100:100;
+  return {
+    score:Math.round(Math.max(0,Math.min(raw,100))*10)/10,
+    reqCov:Math.round(reqCov), optCov:Math.round(optCov),
+    matchedReq:mReq.sort(), missingReq:misReq.sort(),
+    matchedOpt:mOpt.sort(), missingOpt:misOpt.sort(),
+    projScores:projS.slice(0,3), roleScores:roleS.slice(0,3),
+    breakdown:{
+      required:Math.round(0.65*rScore*100*10)/10,
+      optional:Math.round(0.10*oScore*100*10)/10,
+      projects:Math.round(0.12*tp*100*10)/10,
+      roles:   Math.round(0.08*tr*100*10)/10,
+    }
+  };
+}
+
+// ── COLOR HELPERS ──
+function scoreColor(pct){ return pct>=70?'good':pct>=40?'warn':'bad'; }
+function bkColor(val,max){ const p=val/max*100; return p>=70?'var(--teal)':p>=40?'var(--gold)':'var(--rose)'; }
+
+// ── RENDER ──
+function renderMatchResults(r){
+  // Ring
+  const circ=2*Math.PI*42;
+  const offset=circ-(circ*r.score/100);
+  const ring=document.getElementById('ringFill');
+  ring.style.strokeDasharray=circ;
+  ring.style.strokeDashoffset=circ;
+  ring.style.stroke=r.score>=70?'var(--teal)':r.score>=40?'var(--gold)':'var(--rose)';
+  setTimeout(()=>{ ring.style.strokeDashoffset=offset; },50);
+  document.getElementById('ringPct').textContent=r.score+'%';
+
+  // Stats
+  function setStat(id,val,max){
+    const el=document.getElementById(id);
+    el.textContent=val+'%';
+    el.className='score-stat-n '+scoreColor(val/(max||100)*100);
+  }
+  setStat('statReq',r.reqCov,100);
+  setStat('statOpt',r.optCov,100);
+  document.getElementById('statProj').textContent=Math.round((r.projScores[0]?.score||0)*100)+'%';
+  document.getElementById('statProj').className='score-stat-n '+scoreColor((r.projScores[0]?.score||0)*100);
+  document.getElementById('statRole').textContent=Math.round((r.roleScores[0]?.score||0)*100)+'%';
+  document.getElementById('statRole').className='score-stat-n '+scoreColor((r.roleScores[0]?.score||0)*100);
+
+  // Breakdown bars
+  const bd=[
+    {label:'Required skills (65%)', val:r.breakdown.required, max:65},
+    {label:'Optional skills (10%)', val:r.breakdown.optional, max:10},
+    {label:'Project fit (12%)',      val:r.breakdown.projects, max:12},
+    {label:'Role alignment (8%)',    val:r.breakdown.roles,    max:8},
+  ];
+  document.getElementById('breakdownBars').innerHTML = bd.map(b=>`
+    <div class="bk-row">
+      <div class="bk-label">${b.label}</div>
+      <div class="bk-track"><div class="bk-fill" style="width:0%;background:${bkColor(b.val,b.max)}" data-target="${Math.min(b.val/b.max*100,100).toFixed(1)}"></div></div>
+      <div class="bk-val">${b.val}</div>
+    </div>`).join('');
+  // Animate bars after paint
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.bk-fill').forEach(el=>{
+      setTimeout(()=>{ el.style.width=el.dataset.target+'%'; },80);
+    });
+  });
+
+  // Required chips
+  const allReq=[...r.matchedReq.map(s=>({s,cls:'matched'})),...r.missingReq.map(s=>({s,cls:'missing'}))];
+  document.getElementById('reqChips').innerHTML = allReq.length
+    ? allReq.map(({s,cls})=>`<span class="m-chip ${cls}">${s}</span>`).join('')
+    : '<span style="font-size:.8rem;color:var(--text3)">No required skills detected</span>';
+
+  // Optional chips
+  const optSec=document.getElementById('optSection');
+  const allOpt=[...r.matchedOpt.map(s=>({s,cls:'opt-have'})),...r.missingOpt.map(s=>({s,cls:'opt-miss'}))];
+  if(allOpt.length){
+    document.getElementById('optChips').innerHTML=allOpt.map(({s,cls})=>`<span class="m-chip ${cls}">${s}</span>`).join('');
+    optSec.style.display='flex';
+  } else { optSec.style.display='none'; }
+
+  // Projects
+  document.getElementById('projRanked').innerHTML = r.projScores.map((p,i)=>`
+    <div class="ranked-item">
+      <div class="r-num">${i+1}</div>
+      <div class="r-label">${p.name}</div>
+      <div class="r-bar-wrap">
+        <div class="r-bar-track"><div class="r-bar-fill" style="width:${Math.round(p.score*100)}%"></div></div>
+        <div class="r-pct">${Math.round(p.score*100)}%</div>
+      </div>
+    </div>`).join('') || '<span style="font-size:.8rem;color:var(--text3)">No data</span>';
+
+  // Roles
+  document.getElementById('roleRanked').innerHTML = r.roleScores.map((r2,i)=>`
+    <div class="ranked-item">
+      <div class="r-num">${i+1}</div>
+      <div class="r-label">${r2.title}</div>
+      <div class="r-bar-wrap">
+        <div class="r-bar-track"><div class="r-bar-fill" style="width:${Math.round(r2.score*100)}%"></div></div>
+        <div class="r-pct">${Math.round(r2.score*100)}%</div>
+      </div>
+    </div>`).join('') || '<span style="font-size:.8rem;color:var(--text3)">No data</span>';
+
+  document.getElementById('matchResults').classList.add('show');
+  document.getElementById('matchResults').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── MODAL CONTROLS ──
+function openMatchModal(){
+  document.getElementById('matchOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMatchModal(){
+  document.getElementById('matchOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function overlayClick(e){
+  if(e.target===document.getElementById('matchOverlay')) closeMatchModal();
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMatchModal(); });
+
+function runMatch(){
+  const jd=document.getElementById('jdInput').value.trim();
+  if(!jd){ document.getElementById('matchHint').textContent='Please paste a job description first.'; return; }
+  document.getElementById('matchHint').textContent='';
+  const btn=document.getElementById('matchRunBtn');
+  btn.disabled=true;
+  btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Analyzing...';
+  setTimeout(()=>{
+    try{
+      const r=runMatchEngine(jd);
+      renderMatchResults(r);
+    }catch(e){ document.getElementById('matchHint').textContent='Error: '+e.message; }
+    btn.disabled=false;
+    btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> Re-analyze';
+  },150);
+}
+
+</script>
+</body>
+</html>
